@@ -1,6 +1,5 @@
 module.exports = (server, app) => {
   let requiresLogin = function(req, res, next) {
-    console.log(req.session.token);
     if (req.session.token) {
       err = new Error("Not authorized");
       res.status(500).redirect("/");
@@ -17,7 +16,7 @@ module.exports = (server, app) => {
     if (req.body.data.token) {
       req.session.token = req.body.data.token;
     }
-    res.status(200).send({ a: "data found", min: req.session.token });
+    res.status(200).send({ a: "data found", token: req.session.token });
   });
 
   server.get("/register", requiresLogin, (req, res) => {

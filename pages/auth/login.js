@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import fetch from "isomorphic-unfetch";
 import axios from "axios";
 import Layout from "../../layout/mainLayout";
+import { setToken } from "./AuthController";
 
 class login extends Component {
   constructor(props) {
@@ -28,11 +29,12 @@ class login extends Component {
       email: this.state.email,
       password: this.state.pass
     };
-    axios
-      .post("https://reqres.in/api/login", loginData)
-      .then(res =>
-        axios.post("http://localhost:3000/login", res).then(c => console.log(c))
-      );
+    axios.post("https://reqres.in/api/login", loginData).then(res =>
+      axios.post("http://localhost:3000/login", res).then(data => {
+        console.log(data.data);
+        setToken(data.data.token);
+      })
+    );
   };
   render() {
     return (

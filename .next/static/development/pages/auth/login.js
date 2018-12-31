@@ -11832,6 +11832,53 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./pages/auth/AuthController.js":
+/*!**************************************!*\
+  !*** ./pages/auth/AuthController.js ***!
+  \**************************************/
+/*! exports provided: setToken, autoLogin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setToken", function() { return setToken; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "autoLogin", function() { return autoLogin; });
+var setToken = function setToken(token) {
+  if (!localStorage.getItem("token")) {
+    localStorage.setItem("token", token);
+  }
+};
+var autoLogin = function autoLogin() {
+  var token = localStorage.getItem("token");
+
+  if (token) {
+    return true;
+  }
+
+  return false;
+};
+    (function (Component, route) {
+      if(!Component) return
+      if (false) {}
+      module.hot.accept()
+      Component.__route = route
+
+      if (module.hot.status() === 'idle') return
+
+      var components = next.router.components
+      for (var r in components) {
+        if (!components.hasOwnProperty(r)) continue
+
+        if (components[r].Component.__route === route) {
+          next.router.update(r, Component)
+        }
+      }
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/auth/AuthController")
+  
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
 /***/ "./pages/auth/login.js":
 /*!*****************************!*\
   !*** ./pages/auth/login.js ***!
@@ -11850,6 +11897,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _layout_mainLayout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../layout/mainLayout */ "./layout/mainLayout.js");
+/* harmony import */ var _AuthController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AuthController */ "./pages/auth/AuthController.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -11881,6 +11929,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var login =
 /*#__PURE__*/
 function (_Component) {
@@ -11900,8 +11949,9 @@ function (_Component) {
         password: _this.state.pass
       };
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("https://reqres.in/api/login", loginData).then(function (res) {
-        return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("http://localhost:3000/login", res).then(function (c) {
-          return console.log(c);
+        return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("http://localhost:3000/login", res).then(function (data) {
+          console.log(data.data);
+          Object(_AuthController__WEBPACK_IMPORTED_MODULE_5__["setToken"])(data.data.token);
         });
       });
     });
