@@ -3,7 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const next = require("next");
-
+const bodyParser = require("body-parser");
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -25,6 +25,8 @@ app
         }
       })
     );
+    server.use(bodyParser.urlencoded({ extended: true }));
+    server.use(bodyParser.json());
 
     expressRoutes(server, app);
     server.get("*", (req, res) => {

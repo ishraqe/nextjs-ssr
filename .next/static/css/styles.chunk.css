@@ -1,0 +1,57 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #eee; }
+  .nav__logo {
+    font-size: 2rem;
+    font-style: italic; }
+  .nav__button-container .button {
+    color: #222;
+    padding: 0.9rem 2rem;
+    margin-right: 2rem;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.section-login .container {
+  margin: 0 auto;
+  padding: 0 3rem;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+form {
+  width: 355px; }
+  form .input-container {
+    display: block; }
+    form .input-container:not(:last-child) {
+      margin-bottom: 2rem; }
+    form .input-container input {
+      padding: 1rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #222;
+      width: 100%; }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.btn-primary {
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  border: 1px solid #222;
+  background-color: #222;
+  color: #fff;
+  display: block;
+  width: 100%;
+  margin: 0 auto; }
+
+
+/*# sourceMappingURL=styles.chunk.css.map*/

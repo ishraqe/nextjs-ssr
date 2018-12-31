@@ -21,3 +21,44 @@
     }
   }
 }
+.section-login {
+  .container {
+    margin: 0 auto;
+    padding: 0 3rem;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+form {
+  width: 355px;
+  .input-container {
+    display: block;
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+    input {
+      padding: 1rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #222;
+      width: 100%;
+    }
+  }
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-primary {
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  border: 1px solid #222;
+  background-color: #222;
+  color: #fff;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
